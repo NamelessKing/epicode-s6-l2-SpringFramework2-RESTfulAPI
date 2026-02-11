@@ -1,20 +1,41 @@
 package it.epicode.epicodes6l2springframework2restfulapi.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "authors")
 public class Author {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
     private String cognome;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(name = "data_di_nascita", nullable = false)
     private LocalDate dataDiNascita;
+
+    @Column(nullable = false)
     private String avatar;
 
     public Author() {
     }
 
-    public Author(long id, String nome, String cognome, String email, LocalDate dataDiNascita, String avatar) {
-        this.id = id;
+    public Author(String nome, String cognome, String email, LocalDate dataDiNascita, String avatar) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
@@ -22,12 +43,8 @@ public class Author {
         this.avatar = avatar;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNome() {

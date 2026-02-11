@@ -3,7 +3,7 @@ package it.epicode.epicodes6l2springframework2restfulapi.payloads;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
-public class NewBlogPostPayload {
+public class UpdateBlogPostRequest {
     @NotBlank(message = "La categoria e obbligatoria")
     private String categoria;
 
@@ -16,7 +16,7 @@ public class NewBlogPostPayload {
     @Positive(message = "Il tempo di lettura deve essere positivo")
     private int tempoDiLettura;
 
-    public NewBlogPostPayload() {
+    public UpdateBlogPostRequest() {
     }
 
     public String getCategoria() {

@@ -21,6 +21,22 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(ConflictException.class)
+    public ProblemDetail handleConflict(ConflictException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.CONFLICT);
+        problemDetail.setTitle("Conflict");
+        problemDetail.setDetail(ex.getMessage());
+        return problemDetail;
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ProblemDetail handleBadRequest(BadRequestException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setTitle("Bad request");
+        problemDetail.setDetail(ex.getMessage());
+        return problemDetail;
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleValidation(MethodArgumentNotValidException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
